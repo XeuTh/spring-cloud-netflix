@@ -206,6 +206,12 @@ public class SimpleHostRoutingFilter extends ZuulFilter {
 			httpPut.setEntity(new InputStreamEntity(requestEntity, request
 					.getContentLength()));
 			break;
+		case "PATCH":
+			HttpPut httpPut = new HttpPut(uri + getQueryString());
+			httpRequest = httpPut;
+			httpPut.setEntity(new InputStreamEntity(requestEntity, request
+					.getContentLength()));
+			break;
 		default:
 			httpRequest = new BasicHttpRequest(verb, uri + getQueryString());
 			log.debug(uri + getQueryString());
