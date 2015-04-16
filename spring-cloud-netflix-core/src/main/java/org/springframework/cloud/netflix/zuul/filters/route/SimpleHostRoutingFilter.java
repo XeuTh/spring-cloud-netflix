@@ -50,6 +50,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.HttpPatch;
 import org.apache.http.client.params.ClientPNames;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.PlainSocketFactory;
@@ -207,9 +208,9 @@ public class SimpleHostRoutingFilter extends ZuulFilter {
 					.getContentLength()));
 			break;
 		case "PATCH":
-			HttpPut httpPut = new HttpPut(uri + getQueryString());
-			httpRequest = httpPut;
-			httpPut.setEntity(new InputStreamEntity(requestEntity, request
+			HttpPatch httpPatch = new HttpPatch(uri + getQueryString());
+			httpRequest = httpPatch;
+			httpPatch.setEntity(new InputStreamEntity(requestEntity, request
 					.getContentLength()));
 			break;
 		default:
